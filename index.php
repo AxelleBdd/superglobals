@@ -8,7 +8,12 @@
 <body>
     <h1>
         <?php
-        echo 'Bonjour ' . $_GET["first_name"] . '.';
+        if ($_GET["first_name"] == '') {
+            echo 'Bonjour Anonyme.';
+
+        } else {
+            echo 'Bonjour ' . $_GET["first_name"] . '.';
+        }
         ?>
     </h1>
 </body>
