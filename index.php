@@ -15,13 +15,20 @@
     </form>
 
     <?php
-        if ($_GET["first_name"]) {
-            echo 'Bonjour ' . $_GET["first_name"] . '.';
-        } elseif(isset($_POST['first_name'])){
-            echo 'Bonjour ,' .$_POST['first_name'];
-        } else {
-            echo 'Bonjour Anonyme.';
-        }
+    session_start();
+    if ($_GET["first_name"]) {
+        echo 'Bonjour ' . $_GET["first_name"] . '.';
+
+    } elseif($_SESSION["first_name"]) {
+        echo 'Bonjour ' .$_SESSION["first_name"]. '.';
+
+    } elseif(isset($_POST['first_name'])) {
+        echo 'Bonjour ' .$_POST['first_name']. '.';
+        $_SESSION["first_name"] = $_POST['first_name'];
+
+    } else {
+        echo 'Bonjour Anonyme.';
+    }
         
     ?>
 </body>
